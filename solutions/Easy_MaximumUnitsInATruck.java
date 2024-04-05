@@ -43,15 +43,14 @@ class Easy_MaximumUnitsInATruck {
 
         int units = 0;
 
-        for(int i = 0; i < boxTypes.length && truckSize > 0; i++) {
+        for(int i = 0; i < boxTypes.length; i++) {
 
             int numberOfBoxes = Math.min(truckSize, boxTypes[i][0]); ///
             int numberOfUnits = boxTypes[i][1];
-            
-            if ( truckSize >= numberOfBoxes ) {
-                truckSize = truckSize - numberOfBoxes;
-                units = units + ( numberOfUnits * numberOfBoxes ) ;
-            }
+
+            truckSize = truckSize - numberOfBoxes;
+            units = units + ( numberOfUnits * numberOfBoxes ) ;
+
         }
 
         return units;
