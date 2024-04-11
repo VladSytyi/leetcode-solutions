@@ -1,22 +1,21 @@
 import java.util.Arrays;
-import java.util.Stack;
 
 public class Easy_FloodFill {
 
     public static void main(String[] args) {
-         int[][] a = new int[][] {
+         int[][] image = new int[][] {
                  { 1 ,1, 1 },
                  { 1, 1, 0 },
                  { 1, 0, 1 }
         };
 
-        System.out.println(Arrays.deepToString(a));
-        System.out.println(a[0][1]);
-        System.out.println(a[1][2]);
+        System.out.println(Arrays.deepToString(image));
+        System.out.println(image[0][1]);
+        System.out.println(image[1][2]);
 
-        int[][] ints = floodFill(a, 1, 1, 2);
+        int[][] result = floodFill(image, 1, 1, 2);
 
-        System.out.println(Arrays.deepToString(ints));
+        System.out.println(Arrays.deepToString(result));
     }
 
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
