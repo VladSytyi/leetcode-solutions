@@ -31,7 +31,6 @@ class Easy_ValidParenthesis {
                 Character openChar = closeToOpenMap.get(testChar);
 
                 Character popped = stack.pop();
-                stack.peek();
 
                 if (popped != openChar) return false;
 
