@@ -1,40 +1,36 @@
+import java.util.List;
 import java.util.Stack;
 
 class Medium_ReversePolishNotation {
     public static void main(String[] args) {
-        
+        System.out.println(rpn(List.of("10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+").toArray(new String[0])));
     }
 
     public static int rpn(String[] tokens) {
 
         Stack<Integer> stack = new Stack<>();
 
-        for (int i = 0; i < tokens.length; i++) {
+        for (String token : tokens) {
 
-            String token = tokens[i];
-
-            if (token.matches("\\d+")) {
-                stack.push(Integer.valueOf(token));
-            } else if (token.equals("+")) {
-                Integer i1 = stack.pop();
-                Integer i2 = stack.pop();
-                int res = i1 + i2;
-                stack.push(res);
-            } else if (token.equals("-")) {
-                Integer i1 = stack.pop();
-                Integer i2 = stack.pop();
-                int res = i2 - i1;
-                stack.push(res);
-            } else if (token.equals("*")) {
-                Integer i1 = stack.pop();
-                Integer i2 = stack.pop();
-                int res = i2 * i1;
-                stack.push(res);
-            } else if (token.equals("/")) {
-                Integer i1 = stack.pop();
-                Integer i2 = stack.pop();
-                int res = i2 / i1;
-                stack.push(res);
+            switch (token) {
+                case "+":
+                    stack.push(stack.pop() + stack.pop());
+                    break;
+                case "-":
+                    int b = stack.pop();
+                    int a = stack.pop();
+                    stack.push(a - b);
+                    break;
+                case "*":
+                    stack.push(stack.pop() * stack.pop());
+                    break;
+                case "/":
+                    b = stack.pop();
+                    a = stack.pop();
+                    stack.push(a / b);
+                    break;
+                default:
+                    stack.push(Integer.parseInt(token));
             }
 
         }
